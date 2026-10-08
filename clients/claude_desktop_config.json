@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "decent-ichra": {
-      "command": "/ABSOLUTE/PATH/TO/decent-ichra-mcp/.venv/bin/python",
-      "args": ["/ABSOLUTE/PATH/TO/decent-ichra-mcp/server.py"]
-    }
-  }
-}

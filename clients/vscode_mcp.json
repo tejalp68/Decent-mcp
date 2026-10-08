@@ -1,9 +1,0 @@
-{
-  "servers": {
-    "decent-ichra": {
-      "type": "stdio",
-      "command": "/ABSOLUTE/PATH/TO/decent-ichra-mcp/.venv/bin/python",
-      "args": ["/ABSOLUTE/PATH/TO/decent-ichra-mcp/server.py"]
-    }
-  }
-}
