@@ -1,0 +1,8 @@
+[
+  {"carrier": "Anthem Blue Cross", "plan_types": ["HMO", "PPO"], "regions": ["CA"]},
+  {"carrier": "Blue Shield of California", "plan_types": ["HMO", "PPO"], "regions": ["CA"]},
+  {"carrier": "Kaiser Permanente", "plan_types": ["HMO"], "regions": ["CA"]},
+  {"carrier": "UnitedHealthcare", "plan_types": ["PPO", "EPO", "HDHP"], "regions": ["CA", "TX", "NY"]},
+  {"carrier": "Aetna", "plan_types": ["PPO", "EPO", "HDHP"], "regions": ["CA", "TX", "NY"]},
+  {"carrier": "Oscar", "plan_types": ["EPO", "HDHP"], "regions": ["TX", "NY"]}
+]

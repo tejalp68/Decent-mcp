@@ -1,0 +1,68 @@
+[
+  {
+    "id": "emp_001",
+    "name": "Priya Sharma",
+    "company_id": "acme_dental",
+    "age": 34,
+    "zip": "94107",
+    "dependents": 1,
+    "employee_class": "full_time",
+    "monthly_allowance": 450,
+    "enrollment_deadline": "2026-11-15"
+  },
+  {
+    "id": "emp_002",
+    "name": "Marcus Lee",
+    "company_id": "acme_dental",
+    "age": 52,
+    "zip": "94110",
+    "dependents": 0,
+    "employee_class": "full_time",
+    "monthly_allowance": 650,
+    "enrollment_deadline": "2026-11-15"
+  },
+  {
+    "id": "emp_003",
+    "name": "Sofia Alvarez",
+    "company_id": "acme_dental",
+    "age": 27,
+    "zip": "94107",
+    "dependents": 0,
+    "employee_class": "part_time",
+    "monthly_allowance": 300,
+    "enrollment_deadline": "2026-11-15"
+  },
+  {
+    "id": "emp_004",
+    "name": "Daniel Okafor",
+    "company_id": "brightpt",
+    "age": 41,
+    "zip": "78701",
+    "dependents": 2,
+    "employee_class": "full_time",
+    "monthly_allowance": 900,
+    "enrollment_deadline": "2026-12-01"
+  },
+  {
+    "id": "emp_005",
+    "name": "Hannah Weiss",
+    "company_id": "brightpt",
+    "age": 58,
+    "zip": "10001",
+    "dependents": 0,
+    "employee_class": "full_time",
+    "monthly_allowance": 800,
+    "enrollment_deadline": "2026-12-01"
+  },
+  {
+    "id": "emp_006",
+    "name": "Ravi Menon",
+    "company_id": "brightpt",
+    "age": 23,
+    "zip": "78701",
+    "dependents": 0,
+    "employee_class": "full_time",
+    "monthly_allowance": 400,
+    "enrollment_deadline": "2026-12-01"
+  }
+]

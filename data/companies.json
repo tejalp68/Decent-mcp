@@ -1,0 +1,24 @@
+{
+  "acme_dental": {
+    "name": "Acme Dental Group",
+    "ichra_start_date": "2027-01-01",
+    "enrollment_window": "2026-10-15 to 2026-11-15",
+    "allowance_rules": [
+      {"employee_class": "full_time", "age_band": "under 40", "monthly": 450},
+      {"employee_class": "full_time", "age_band": "40 and over", "monthly": 650},
+      {"employee_class": "part_time", "age_band": "all ages", "monthly": 300}
+    ],
+    "notes": "Allowance can be used for any individual-market plan sold in the employee's home zip code. Unused allowance is not paid out as cash. Dependents are covered by the same allowance."
+  },
+  "brightpt": {
+    "name": "Bright Physical Therapy",
+    "ichra_start_date": "2027-01-01",
+    "enrollment_window": "2026-11-01 to 2026-12-01",
+    "allowance_rules": [
+      {"employee_class": "full_time", "age_band": "under 40", "monthly": 400},
+      {"employee_class": "full_time", "age_band": "40 and over", "monthly": 800},
+      {"employee_class": "full_time", "age_band": "with 2+ dependents", "monthly": 900}
+    ],
+    "notes": "Allowance can be used for any individual-market plan sold in the employee's home zip code. Unused allowance is not paid out as cash."
+  }
+}

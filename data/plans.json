@@ -1,0 +1,213 @@
+[
+  {
+    "plan_id": "anthem_hmo_silver",
+    "name": "Anthem Select HMO Silver",
+    "carrier": "Anthem Blue Cross",
+    "plan_type": "HMO",
+    "metal_tier": "Silver",
+    "base_premium_21": 395,
+    "deductible": 1500,
+    "oop_max": 8000,
+    "hsa_eligible": false,
+    "zips": [
+      "94107",
+      "94110"
+    ],
+    "coinsurance_pct": 30,
+    "pcp_copay": 40,
+    "specialist_copay": 70,
+    "rx_generic_copay": 15
+  },
+  {
+    "plan_id": "kaiser_hmo_silver",
+    "name": "Kaiser HMO Silver",
+    "carrier": "Kaiser Permanente",
+    "plan_type": "HMO",
+    "metal_tier": "Silver",
+    "base_premium_21": 385,
+    "deductible": 1200,
+    "oop_max": 7500,
+    "hsa_eligible": false,
+    "zips": [
+      "94107",
+      "94110"
+    ],
+    "coinsurance_pct": 30,
+    "pcp_copay": 35,
+    "specialist_copay": 60,
+    "rx_generic_copay": 15
+  },
+  {
+    "plan_id": "uhc_hdhp_bronze_ca",
+    "name": "UHC Choice HDHP Bronze",
+    "carrier": "UnitedHealthcare",
+    "plan_type": "HDHP",
+    "metal_tier": "Bronze",
+    "base_premium_21": 310,
+    "deductible": 6000,
+    "oop_max": 8700,
+    "hsa_eligible": true,
+    "zips": [
+      "94107",
+      "94110"
+    ],
+    "coinsurance_pct": 30,
+    "pcp_copay": null,
+    "specialist_copay": null,
+    "rx_generic_copay": null
+  },
+  {
+    "plan_id": "oscar_epo_gold_tx",
+    "name": "Oscar EPO Gold",
+    "carrier": "Oscar",
+    "plan_type": "EPO",
+    "metal_tier": "Gold",
+    "base_premium_21": 470,
+    "deductible": 800,
+    "oop_max": 6800,
+    "hsa_eligible": false,
+    "zips": [
+      "78701",
+      "10001"
+    ],
+    "coinsurance_pct": 20,
+    "pcp_copay": 25,
+    "specialist_copay": 50,
+    "rx_generic_copay": 10
+  },
+  {
+    "plan_id": "anthem_ppo_gold_ca",
+    "name": "Anthem PPO Gold",
+    "carrier": "Anthem Blue Cross",
+    "plan_type": "PPO",
+    "metal_tier": "Gold",
+    "base_premium_21": 520,
+    "deductible": 750,
+    "oop_max": 6500,
+    "hsa_eligible": false,
+    "zips": [
+      "94107",
+      "94110"
+    ],
+    "coinsurance_pct": 20,
+    "pcp_copay": 25,
+    "specialist_copay": 50,
+    "rx_generic_copay": 10
+  },
+  {
+    "plan_id": "bsc_hmo_bronze_ca",
+    "name": "Blue Shield Trio HMO Bronze",
+    "carrier": "Blue Shield of California",
+    "plan_type": "HMO",
+    "metal_tier": "Bronze",
+    "base_premium_21": 330,
+    "deductible": 6500,
+    "oop_max": 9100,
+    "hsa_eligible": false,
+    "zips": [
+      "94107",
+      "94110"
+    ],
+    "coinsurance_pct": 40,
+    "pcp_copay": 50,
+    "specialist_copay": 90,
+    "rx_generic_copay": 25
+  },
+  {
+    "plan_id": "bsc_ppo_silver_ca",
+    "name": "Blue Shield PPO Silver",
+    "carrier": "Blue Shield of California",
+    "plan_type": "PPO",
+    "metal_tier": "Silver",
+    "base_premium_21": 430,
+    "deductible": 2500,
+    "oop_max": 8200,
+    "hsa_eligible": false,
+    "zips": [
+      "94107",
+      "94110"
+    ],
+    "coinsurance_pct": 30,
+    "pcp_copay": 45,
+    "specialist_copay": 80,
+    "rx_generic_copay": 20
+  },
+  {
+    "plan_id": "aetna_hdhp_bronze",
+    "name": "Aetna HDHP Bronze",
+    "carrier": "Aetna",
+    "plan_type": "HDHP",
+    "metal_tier": "Bronze",
+    "base_premium_21": 300,
+    "deductible": 6200,
+    "oop_max": 8900,
+    "hsa_eligible": true,
+    "zips": [
+      "94107",
+      "94110",
+      "78701",
+      "10001"
+    ],
+    "coinsurance_pct": 30,
+    "pcp_copay": null,
+    "specialist_copay": null,
+    "rx_generic_copay": null
+  },
+  {
+    "plan_id": "aetna_ppo_silver",
+    "name": "Aetna PPO Silver",
+    "carrier": "Aetna",
+    "plan_type": "PPO",
+    "metal_tier": "Silver",
+    "base_premium_21": 410,
+    "deductible": 2800,
+    "oop_max": 8000,
+    "hsa_eligible": false,
+    "zips": [
+      "78701",
+      "10001"
+    ],
+    "coinsurance_pct": 30,
+    "pcp_copay": 40,
+    "specialist_copay": 75,
+    "rx_generic_copay": 15
+  },
+  {
+    "plan_id": "uhc_ppo_gold_tx_ny",
+    "name": "UHC Choice PPO Gold",
+    "carrier": "UnitedHealthcare",
+    "plan_type": "PPO",
+    "metal_tier": "Gold",
+    "base_premium_21": 500,
+    "deductible": 900,
+    "oop_max": 6600,
+    "hsa_eligible": false,
+    "zips": [
+      "78701",
+      "10001"
+    ],
+    "coinsurance_pct": 20,
+    "pcp_copay": 30,
+    "specialist_copay": 55,
+    "rx_generic_copay": 10
+  },
+  {
+    "plan_id": "oscar_hdhp_bronze",
+    "name": "Oscar HDHP Bronze",
+    "carrier": "Oscar",
+    "plan_type": "HDHP",
+    "metal_tier": "Bronze",
+    "base_premium_21": 295,
+    "deductible": 6400,
+    "oop_max": 8800,
+    "hsa_eligible": true,
+    "zips": [
+      "78701",
+      "10001"
+    ],
+    "coinsurance_pct": 30,
+    "pcp_copay": null,
+    "specialist_copay": null,
+    "rx_generic_copay": null
+  }
+]

@@ -1,0 +1,4 @@
+# Pinned below 2.0: this project uses the FastMCP API (mcp.server.fastmcp).
+# mcp 2.x renamed it to MCPServer.
+mcp[cli]>=1.2,<2
+tiktoken>=0.7   # optional: exact token counts; falls back to a chars/4 estimate if unavailable
