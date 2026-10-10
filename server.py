@@ -14,6 +14,7 @@ Run:
 """
 import argparse
 import json
+import re
 import sys
 import uuid
 from datetime import datetime, timezone
@@ -21,10 +22,8 @@ from pathlib import Path
 
 from mcp.server.fastmcp import FastMCP
 
-from rag import DEFAULT_TOP_K, get_index
-from tokens import count_tokens, token_method
-
 DATA = Path(__file__).parent / "data"
+DOCS_DIR = Path(__file__).parent / "docs"
 
 mcp = FastMCP(
     "decent-ichra-assistant",
@@ -110,7 +109,7 @@ def list_plans(zip_code: str, age: int, dependents: int = 0, monthly_allowance: 
         raise ValueError(f"No plans are sold in zip code {zip_code}. Supported zip codes: {', '.join(supported)}.")
     if age < 18 or age > 90:
         raise ValueError("age must be between 18 and 90.")
-    documented = set(get_index().available_plans())
+    documented = {p.stem for p in DOCS_DIR.glob("*.md")}
     rows = []
     for p in plans:
         prem = _monthly_premium(p, age, dependents)
@@ -134,38 +133,44 @@ def list_plans(zip_code: str, age: int, dependents: int = 0, monthly_allowance: 
             "note": "Premiums are MOCK estimates for a student project."}
 
 
+_SKIP_WORDS = set("a an and are as at be by for from has have how i in is it my of on or that the this to was what when "
+                  "which with do does can me you your covered cover covers coverage plan plans".split())
+
+
 @mcp.tool()
-def search_plan_documents(query: str, plan_id: str = "", top_k: int = DEFAULT_TOP_K) -> dict:
-    """Search the carrier's plan documents (benefits, drug formulary, referrals, prior authorization,
-    emergency care, claims, ICHRA reimbursement) and return ONLY the few most relevant passages.
+def search_plan_documents(query: str, plan_id: str) -> dict:
+    """Look up a question in one plan's document (benefits, drug list, referrals, prior authorization,
+    emergency care, claims, ICHRA reimbursement) and return the lines that mention your keywords.
 
     Use this for specific questions such as 'is metformin covered', 'do I need a referral',
-    'what needs prior authorization'. ALWAYS pass plan_id when you know it (e.g. 'anthem_hmo_silver'),
-    otherwise passages from different plans get mixed. Only plans with has_document=true in list_plans
-    have documents. Quote or paraphrase the returned passages; if nothing relevant is returned, say you
-    could not find it and offer flag_for_advisor.
+    'what needs prior authorization'. plan_id is required, for example 'anthem_hmo_silver'. Only plans
+    with has_document=true in list_plans have a document. Quote or paraphrase what is returned; if
+    nothing is returned, say you could not find it and offer flag_for_advisor.
     """
-    index = get_index()
     plan_id = plan_id.strip().lower()
-    if plan_id and plan_id not in index.available_plans():
-        raise ValueError(
-            f"No document for plan '{plan_id}'. Plans with documents: {', '.join(index.available_plans())}."
-        )
-    top_k = max(1, min(int(top_k), 5))
-    hits = index.search(query, top_k=top_k, plan_id=plan_id or None)
-    returned = sum(count_tokens(h["text"]) for h in hits)
-    out = {
-        "query": query,
-        "plan_id": plan_id or "all documented plans",
-        "passages": [{"plan_id": h["plan_id"], "section": h["section"], "relevance": h["score"], "text": h["text"]}
-                     for h in hits],
-        "tokens_returned": returned,
-        "token_count_method": token_method(),
-    }
-    if plan_id:
-        out["tokens_in_full_document"] = index.doc_tokens[plan_id]
-    if not hits:
-        out["note"] = "No relevant passages found. Do not guess; tell the user and offer flag_for_advisor."
+    path = DOCS_DIR / f"{plan_id}.md"
+    if not plan_id or not path.exists():
+        available = sorted(p.stem for p in DOCS_DIR.glob("*.md"))
+        raise ValueError(f"No document for plan '{plan_id}'. Plans with documents: {', '.join(available)}.")
+
+    words = {w for w in re.findall(r"[a-z0-9]+", query.lower()) if w not in _SKIP_WORDS}
+    section, matches = "Introduction", []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if line.startswith("## "):
+            section = line[3:].strip()
+            continue
+        if not line or line.startswith("#"):
+            continue
+        hits = len(words & set(re.findall(r"[a-z0-9]+", line.lower())))
+        if hits:
+            matches.append((hits, section, line))
+    matches.sort(key=lambda m: m[0], reverse=True)
+
+    out = {"query": query, "plan_id": plan_id,
+           "matches": [{"section": sec, "text": text} for _, sec, text in matches[:4]]}
+    if not matches:
+        out["note"] = "Nothing found. Do not guess; tell the user and offer flag_for_advisor."
     return out
 
 
