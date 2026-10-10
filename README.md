@@ -1,3 +1,4 @@
+![ICHRA Employee Assistant](Assets/banner.png)
 # ICHRA Employee Assistant — an MCP server for Decent
 
 My server helps an employee pick a health plan using the monthly allowance their employer gives them (an ICHRA).
