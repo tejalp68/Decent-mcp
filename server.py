@@ -37,7 +37,7 @@ mcp = FastMCP(
 )
 
 
-# ----------------------------------------------------------------------------- data helpers
+
 def _load(name: str):
     return json.loads((DATA / name).read_text())
 
@@ -69,7 +69,6 @@ def _monthly_premium(plan: dict, age: int, dependents: int) -> float:
     return round(base * age_factor + dependents * 0.6 * base, 2)
 
 
-# ----------------------------------------------------------------------------- TOOLS
 @mcp.tool()
 def get_employee_allowance(employee_id: str) -> dict:
     """Look up one employee's ICHRA details: monthly allowance, age, zip code, dependents,
@@ -179,7 +178,7 @@ USAGE_PROFILES = {
     "medium": {"pcp_visits": 4, "specialist_visits": 3, "generic_fills": 12, "major_event_bill": 3000},
     "high":   {"pcp_visits": 8, "specialist_visits": 8, "generic_fills": 24, "major_event_bill": 30000},
 }
-# What the provider bills (before insurance) per service - used only for deductible-based plans.
+
 BILLED = {"pcp": 150, "specialist": 250, "fill": 30}
 
 
@@ -211,13 +210,13 @@ def estimate_yearly_cost(employee_id: str, plan_id: str, usage_level: str = "med
 
     coins = p["coinsurance_pct"] / 100
     ded = p["deductible"]
-    if p["pcp_copay"] is not None:      # plans with flat copays for routine care
+    if p["pcp_copay"] is not None:      
         copays = (u["pcp_visits"] * p["pcp_copay"] + u["specialist_visits"] * p["specialist_copay"]
                   + u["generic_fills"] * p["rx_generic_copay"])
         big = u["major_event_bill"]
         big_cost = min(big, ded) + coins * max(0, big - ded)
         oop = min(p["oop_max"], copays + big_cost)
-    else:                                # HDHP: everything counts toward the deductible
+    else:                              
         billed = (u["pcp_visits"] * BILLED["pcp"] + u["specialist_visits"] * BILLED["specialist"]
                   + u["generic_fills"] * BILLED["fill"] + u["major_event_bill"])
         oop = min(p["oop_max"], min(billed, ded) + coins * max(0, billed - ded))
@@ -269,7 +268,6 @@ def flag_for_advisor(employee_id: str, reason: str, urgency: str = "normal") -> 
             "message": f"A Decent advisor will follow up with {e['name']} before the enrollment deadline ({e['enrollment_deadline']})."}
 
 
-# ----------------------------------------------------------------------------- RESOURCES
 @mcp.resource("decent://glossary")
 def glossary() -> str:
     """Plain-language definitions of health insurance terms (deductible, ICHRA, HMO, ...)."""
@@ -291,7 +289,7 @@ def company_policy(company_id: str) -> str:
     return json.dumps(companies[company_id], indent=2)
 
 
-# ----------------------------------------------------------------------------- PROMPTS
+
 @mcp.prompt()
 def pick_my_plan(employee_id: str) -> str:
     """Guided flow: help an employee pick a plan using their real ICHRA allowance."""
@@ -331,8 +329,6 @@ def compare_two_plans(plan_a: str, plan_b: str, employee_id: str) -> str:
         "year. Do not make a medical judgment; offer flag_for_advisor if they want a person to review it."
     )
 
-
-# ----------------------------------------------------------------------------- entrypoint
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="ICHRA Employee Assistant MCP server (mock data)")
     parser.add_argument("--transport", choices=["stdio", "http"], default="stdio")
