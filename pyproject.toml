@@ -1,7 +1,7 @@
 [project]
-name = "mcp-assignment-2"
+name = "Decent-mcp"
 version = "0.1.0"
-description = "Add your description here"
+description = ""
 readme = "README.md"
 authors = [
     { name = "tejalp68", email = "tejalpagar368@gmail.com" }
@@ -9,11 +9,10 @@ authors = [
 requires-python = ">=3.13"
 dependencies = [
     "mcp[cli]<2",
-    "tiktoken>=0.14.0",
 ]
 
 [project.scripts]
-mcp-assignment-2 = "mcp_assignment_2:main"
+mcp-assignment-2 = "Decent-mcp:main"
 
 [build-system]
 requires = ["uv_build>=0.12.21,<0.13.0"]
