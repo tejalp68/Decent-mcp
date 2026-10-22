@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+.venv/
+venv/
+
+# Secrets
+.env
+
+# VS Code: ignore everything except the MCP config
+.vscode/*
+!.vscode/mcp.json
